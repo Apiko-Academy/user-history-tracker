@@ -3,12 +3,11 @@ intIntervalTime = 100;
 
 var fnCheckLocation = function(){
   // Check to see if the location has changed.
-  // if (strLocation != window.location.href){
-  //   strLocation = window.location.href;
-  //
-  //   addQueryToLinks( generateNewQuery(strLocation) );
-  // }
-  console.log('Works')
+  if (strLocation != window.location.href){
+    strLocation = window.location.href;
+
+    addQueryToLinks( generateNewQuery(strLocation) );
+  }
 }
 
 var generateNewQuery = function(href) {
@@ -18,6 +17,7 @@ var generateNewQuery = function(href) {
   var query = parser.search;
   var newQuery= query ? query : '?';
 
+  // returns object with query parameters
   var parseQueryToObj = function( queryString ) {
     var params = {}, queries, temp, i, l;
 
@@ -35,6 +35,7 @@ var generateNewQuery = function(href) {
 
   var parsedQuery = parseQueryToObj(query.substring(1));
 
+  // generate new query according to existing
   if(parsedQuery['currPath_1'] === undefined) {
     newQuery += 'currPath_1=' + parser.pathname.substring(1)
   } else {
@@ -50,7 +51,6 @@ var addQueryToLinks = function(queryToAdd) {
     $('a').each(function() {
       if(!this.hash && (
         this.hostname === 'jssolutionsdev.com' ||
-        //  this.hostname === 'localhost' ||
         this.hostname === 'blog.jssolutionsdev.com') )
         {
           var urlWithoutQuery = this.href.split(/[?#]/)[0];
@@ -62,5 +62,5 @@ var addQueryToLinks = function(queryToAdd) {
 
   // First load check
   fnCheckLocation();
-  // Set an interval to check the location changes.
+  // Handle url changes
   setInterval( fnCheckLocation, intIntervalTime );
