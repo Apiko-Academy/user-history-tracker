@@ -3,7 +3,7 @@
 ---
 To start:
 
-1. Add tag to the end of your html file: <script src="./trackHistory.js"></script>
+1. Add tag to the end of your html file: `<script src="./trackHistory.js"></script>`
 2. In `addQueryToLinks` function, change hostnames, whose links you want to track
 
 That`s all. When user loads the page, all links on page with domains we specified in step 2 will be supplemented with query parameter, that describes current route
