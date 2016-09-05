@@ -2,6 +2,7 @@
 ##### Track user history via url.
 ---
 To start:
+
 1. Add tag to the end of your html file: <script src="./trackHistory.js"></script>
 2. In `addQueryToLinks` function, change hostnames, whose links you want to track
 
