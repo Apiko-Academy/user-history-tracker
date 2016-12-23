@@ -11,10 +11,11 @@ That`s all. When user loads the page, all links on page with domains we specifie
 ## Tip
 You can use this function to get array with user history:
 ```
+// ES5
 var parseQueryToArray = function( queryString ) {
   var params = [], queries, temp, i, l;
 
-  // Split into key/value pairs
+  // Split into 'key=value' pairs
   queries = queryString.split("&");
 
   // Convert the array of strings into an object
@@ -25,4 +26,16 @@ var parseQueryToArray = function( queryString ) {
 
   return params;
 };
+
+// ES6
+const parseQueryToArray = queryString => {
+  // Split into 'key=value' pairs
+  const queries = queryString.split("&");
+  
+  // Get value from pair, ex: 'key=value' => 'value'
+  const getValueFromQueryPair = queryPair => queryPair.split('=')[1];
+  
+  return queries.map(getValueFromQueryPair);
+};
+
 ```
